@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ASPMVC01.Models.tProduct>
+
+@{
+    ViewBag.Title = "Product List";
+}
+
+<h2>Product List</h2>
+
+<p>
+    @Html.ActionLink("新增", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fImg)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fPrice)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.fImg)*@
+            <img src="~/images/@item.fImg" width="200"/>
+        </td>
+        <td>
+            @Html.ActionLink("編輯", "Edit", new { id=item.fId }) |            @*@Html.ActionLink("Details", "Details", new { id=item.fId }) |*@
+            @Html.ActionLink("刪除", "Delete", new { id=item.fId })
+        </td>
+    </tr>
+}
+
+</table>
